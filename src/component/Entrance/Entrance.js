@@ -1,5 +1,7 @@
 import React from 'react'
 import './Entrance.scss';
+import kremlin from '../../assets/img/kremlin.svg';
+import logoReact from '../../assets/img/react.svg';
 
 import { connect } from 'react-redux'
 
@@ -9,7 +11,7 @@ const Entrance = ( { closeEntranceCreator } ) => {
     return (
         <section className='entrance'>
 
-            <img src='/assets/img/kremlin.svg' alt='Kremlin'/>
+            <img src={kremlin} alt='Kremlin'/>
 
             <div className='table top'>
                 <div className='empty'></div>
@@ -189,7 +191,7 @@ const Entrance = ( { closeEntranceCreator } ) => {
             </div>
 
             <div className='table bottom'>
-                <img src='/assets/img/react.svg' alt='React logo'/>
+                <img src={logoReact} alt='logo React'/>
 
                 <div className='empty'></div>
                 <div className='empty'></div>
