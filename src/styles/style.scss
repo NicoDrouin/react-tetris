@@ -1,0 +1,147 @@
+@import 'colors';
+@import 'controls';
+@import 'tetrominoes';
+
+/*  LAYOUT
+  ============================== */
+
+* {
+  box-sizing: border-box;
+  
+  &::selection {
+    background-color: rgba(232, 137, 158, .99);
+  }
+}
+
+img::selection {
+  background-color: $primaryColor;
+}
+
+@font-face {
+  font-family: 'munro';
+  src: url('../assets/fonts/munro.ttf') format('truetype');
+}
+
+html {
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  min-height: 568px;
+}
+
+body,
+#root,
+.App {
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: munro, 'Courier New', Courier, monaco, monospace, sans-serif;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $bgColor;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.App {
+  display: flex;
+  height: auto;
+}
+
+
+/*  COMMONS - BTN
+  ============================== */
+
+.btn {
+  display: inline-block;
+  padding: 8px 32px 8px 40px;
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background-color: $primaryColor;
+  cursor: pointer;
+  transition: background-color .25s ease;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $primaryColorSaturated;
+  }
+}
+
+
+/*  COMMONS - TABLES
+  ============================== */
+
+.next-shape-container,
+.playfield,
+.entrance > .table {
+  background-color: $secondaryColor;
+  border: 10px solid $primaryColor;
+}
+
+.playfield,
+.entrance > .table {
+
+  > div {
+    float: left;
+  }
+
+  br {
+    content: '';
+    display: block;
+  }
+}
+
+.next-shape .line,
+.playfield {
+
+  > div {
+    width: 48px;
+    border: 1px solid $primaryColor;
+  }
+}
+
+
+/*  COMMONS - SIDES
+  ============================== */
+
+.side {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 24px;
+}
+
+
+/*  RESP
+  ============================== */
+
+.isTouch .side {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .App:not(.isTouch) .side {
+    font-size: 32px;
+  }
+}
+
+
+/*  HELPERS
+  ============================== */
+
+.d-none,
+.border {
+  display: none;
+}

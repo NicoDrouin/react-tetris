@@ -1,0 +1,60 @@
+/*  NEXT SHAPE
+  ============================== */
+
+.next-shape-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 240px;
+    max-height: 167px;
+    width: calc((100vh - 16px) / 4);
+    height: calc(((100vh - 16px) / 4) * (3 / 5));
+
+    .line + .line {
+        margin-top: -1px;
+    }
+}
+
+.next-shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+
+    .line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+        > div {
+            width: 20%;
+            padding-bottom: calc(20% - 2px);
+        }
+
+        .empty {
+            border: 1px solid transparent;
+        }
+    }
+}
+
+
+/*  RESP
+  ============================== */
+
+.isTouch .next-shape-container {
+    width: calc((100vh - (176px + 10px + 32px)) / 4);
+    height: calc((100vh - (176px + 10px + 32px)) / 20 * 3);
+}
+
+@media screen and (min-width: 342px) {
+    .isTouch .next-shape-container {
+        max-width: calc(((100vw - 32px) * (1 / 3)) - 20px);
+        max-height: calc((100vw - 32px) * (3 / 15));
+    }
+}

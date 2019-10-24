@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
 
-function App() {
+import { connect } from 'react-redux'
+
+import Entrance from './component/Entrance/Entrance'
+import Tetris from './component/Tetris/Tetris/Tetris'
+
+
+const App = ( { isEntranceClosed } ) => {
+
+  let isTouch = (window.innerWidth * window.innerHeight) < 1024 * 768 ? true : false
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={isTouch ? 'App isTouch' : 'App'}>
+      {
+        isEntranceClosed
+        ?
+        <Tetris/>
+        :
+        <Entrance/>
+      }
     </div>
-  );
+  )
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isEntranceClosed: state.closeEntranceReducer
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  undefined
+)(App)

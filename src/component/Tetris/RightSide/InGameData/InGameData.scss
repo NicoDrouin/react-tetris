@@ -1,0 +1,16 @@
+/*  RIGHT SIDE
+  ============================== */
+
+.num-data {
+    margin-bottom: 16px;
+}
+
+
+/*  RESP
+  ============================== */
+
+@media screen and (min-width: 1024px) {
+    .App:not(.isTouch) .num-data {
+        margin-bottom: 32px;
+    }
+}

@@ -1,0 +1,46 @@
+# Rotation states of all seven tetrominoes :
+https://tetris.fandom.com/wiki/SRS
+
+
+# Scoring
+https://tetris.fandom.com/wiki/Scoring#Original_Nintendo_Scoring_System
+
+
+# Color per tetrominoes :
+
+I = orange
+####
+
+J = blue
+#
+###
+
+L = purple
+  #
+###
+
+O = red
+##
+##
+
+S = teal
+ ##
+##
+
+T = yellow
+ #
+###
+
+Z = green
+##
+ ##
+
+Other class in the playfield :
+empty
+border
+
+
+# Move direction per number :
+position/move 12 = down
+position/move -1 = left
+position/move 1 = right

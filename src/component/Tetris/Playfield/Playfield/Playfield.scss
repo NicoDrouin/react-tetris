@@ -1,0 +1,34 @@
+/*  PLAYFIELD
+  ============================== */
+
+.playfield {
+    position: relative;
+    max-width: calc((100vh - 16px) / 2);
+
+    > div {
+        max-width: calc(100% / 10);
+        padding-bottom: calc((100% / 10) - 2px);
+
+        &:nth-child(-n + 26) {
+            display: none;
+        }
+    }
+
+    br {
+        clear: both;
+    }
+}
+
+
+/*  RESP
+  ============================== */
+
+.isTouch .playfield {
+    max-width: calc((100vh - (176px + 12px)) / 2);
+}
+
+@media screen and (min-width: 342px) {
+    .isTouch .playfield-container {
+        max-width: calc(((100vw - 32px) * (2 / 3)) - 20px);
+    }
+}

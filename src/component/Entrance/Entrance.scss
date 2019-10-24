@@ -1,0 +1,72 @@
+@import '../../styles/colors';
+
+/*  ENTRANCE
+  ============================== */
+
+.entrance {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    font-size: 26px;
+    background-color: $bgColor;
+
+    > img {
+        width: 240px;
+        max-width: 60%;
+    }
+
+    p {
+        text-align: center;
+        margin: 32px 0;
+    }
+
+    > .table {
+
+        > div {
+            width: 24px;
+            border: 1px solid $primaryColor;
+        }
+
+        &.top > div {
+            max-width: calc(100% / 23);
+            padding-bottom: calc(100% / 23);
+        }
+
+        &.bottom {
+            position: relative;
+            max-width: calc((100% * 7 / 23) + 14px);
+            margin-top: -10px;
+            border-top: 0;
+
+            > div {
+                max-width: calc(100% / 7);
+                padding-bottom: calc(100% / 7);
+            }
+
+            > img {
+                position: absolute;
+                width: 80%;
+                top: 10%;
+                left: 10%;
+                animation: rotate 3s cubic-bezier(.5, 0, .5, 1);
+            }
+        }
+    }
+}
+  
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotate(540deg);
+        transform:rotate(540deg);
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .entrance {
+        font-size: 28px;
+    }
+}

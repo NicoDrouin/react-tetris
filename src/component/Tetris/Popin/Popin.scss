@@ -1,0 +1,38 @@
+@import '../../../styles/colors';
+
+/*  POPINS
+  ============================== */
+
+.popin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    padding: 40px 32px;
+    background-color: rgba(0, 0, 0, .7);
+    overflow: auto;
+}
+
+.popin {
+    width: 450px;
+    text-align: center;
+    margin: auto;
+    padding: 40px 32px;
+    font-size: 30px;
+    border: 8px solid $primaryColor;
+    background-color: aliceblue;
+
+    p {
+        margin: 0 0 32px;
+        color: black;
+    }
+}
+
+.popin-is-open {
+    position: fixed;
+}

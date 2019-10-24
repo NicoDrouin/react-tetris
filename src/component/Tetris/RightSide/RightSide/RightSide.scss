@@ -1,0 +1,17 @@
+/*  RIGHT SIDE
+  ============================== */
+
+.right-side {
+    justify-content: center;
+    padding-left: 32px;
+}
+
+
+/*  RESP
+  ============================== */
+
+@media screen and (min-width: 342px) {
+    .isTouch .right-side {
+        display: flex;
+    }
+}

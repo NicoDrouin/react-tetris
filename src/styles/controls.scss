@@ -1,0 +1,63 @@
+/*  CONTROLS
+  ============================== */
+
+.App:not(.isTouch) .control {
+    display: none;
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    .top {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .top > div,
+    .bottom > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 72px;
+        margin: 16px;
+        font-size: 36px;
+        font-weight: bold;
+        background-color: $primaryColor;
+        cursor: pointer;
+        transition: background-color .25s ease;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $primaryColorSaturated;
+        }
+
+        &::selection {
+            background-color: transparent;
+        }
+    }
+
+    .bottom {
+        width: 304px;
+
+        > div {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    > div > div {
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
