@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/react-tetris/static/css/main.fc97e9c1.chunk.css",
-    "main.js": "/react-tetris/static/js/main.885b1a5f.chunk.js",
-    "main.js.map": "/react-tetris/static/js/main.885b1a5f.chunk.js.map",
+    "main.css": "/react-tetris/static/css/main.608e1fc7.chunk.css",
+    "main.js": "/react-tetris/static/js/main.7a18cd52.chunk.js",
+    "main.js.map": "/react-tetris/static/js/main.7a18cd52.chunk.js.map",
     "runtime-main.js": "/react-tetris/static/js/runtime-main.b5162aea.js",
     "runtime-main.js.map": "/react-tetris/static/js/runtime-main.b5162aea.js.map",
-    "static/js/2.6368bc01.chunk.js": "/react-tetris/static/js/2.6368bc01.chunk.js",
-    "static/js/2.6368bc01.chunk.js.map": "/react-tetris/static/js/2.6368bc01.chunk.js.map",
+    "static/js/2.3c7e2a72.chunk.js": "/react-tetris/static/js/2.3c7e2a72.chunk.js",
+    "static/js/2.3c7e2a72.chunk.js.map": "/react-tetris/static/js/2.3c7e2a72.chunk.js.map",
     "index.html": "/react-tetris/index.html",
-    "precache-manifest.91e84fcb3c9b60b8062aa563bb1cba1a.js": "/react-tetris/precache-manifest.91e84fcb3c9b60b8062aa563bb1cba1a.js",
+    "precache-manifest.f660da554733c5191b55ef84bdc8ba8a.js": "/react-tetris/precache-manifest.f660da554733c5191b55ef84bdc8ba8a.js",
     "service-worker.js": "/react-tetris/service-worker.js",
-    "static/css/main.fc97e9c1.chunk.css.map": "/react-tetris/static/css/main.fc97e9c1.chunk.css.map",
-    "static/media/style.scss": "/react-tetris/static/media/munro.7797f622.ttf"
+    "static/css/main.608e1fc7.chunk.css.map": "/react-tetris/static/css/main.608e1fc7.chunk.css.map",
+    "static/media/kremlin.svg": "/react-tetris/static/media/kremlin.5dbdabf9.svg",
+    "static/media/style.scss": "/react-tetris/static/media/munro.7797f622.ttf",
+    "static/media/react.svg": "/react-tetris/static/media/react.f736ae38.svg"
   }
 }
