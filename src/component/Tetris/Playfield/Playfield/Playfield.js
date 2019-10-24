@@ -381,12 +381,12 @@ const Playfield = ( {
             </div>
             <div className='control'>
                 <div className='top'>
-                    <div onClick={() => moveShape(-1)}>l</div>
-                    <div onClick={() => rotate()}>t</div>
-                    <div onClick={() => moveShape(1)}>r</div>
+                    <button onClick={() => moveShape(-1)}>l</button>
+                    <button onClick={() => rotate()}>t</button>
+                    <button onClick={() => moveShape(1)}>r</button>
                 </div>
                 <div className='bottom'>
-                    <div onClick={() => moveShape(12)}>bottom</div>
+                    <button onClick={() => moveShape(12)}>bottom</button>
                 </div>
             </div>
         </Fragment>

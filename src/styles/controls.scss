@@ -16,8 +16,7 @@
         flex-direction: row;
     }
 
-    .top > div,
-    .bottom > div {
+    button {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,6 +25,8 @@
         margin: 16px;
         font-size: 36px;
         font-weight: bold;
+        color: white;
+        border: 0;
         background-color: $primaryColor;
         cursor: pointer;
         transition: background-color .25s ease;
@@ -44,13 +45,13 @@
     .bottom {
         width: 304px;
 
-        > div {
+        > button {
             width: 100%;
             margin: 0;
         }
     }
 
-    > div > div {
+    > div > button {
 
         &:first-child {
             margin-left: 0;
