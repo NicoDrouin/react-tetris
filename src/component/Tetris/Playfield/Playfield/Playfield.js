@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import './Playfield.scss';
+import './Playfield.scss'
 
 import { connect } from 'react-redux'
 
@@ -26,11 +26,14 @@ let currentShapeWallKicksPosition
 
 let speed = 1000
 
-let timerId
+let timerTetrominoesFalling
+let timerMoveOnHoldTouchControl
 
 let gameIsPaused = false
 
-let gameIsRunning = true
+let gameIsRunning = false
+
+let countDownIsOver = false
 
 
 const Playfield = ( {
@@ -48,12 +51,14 @@ const Playfield = ( {
 } ) => {
 
     useEffect(() => {
-        if (gameIsRunning && gameIsPaused && popinState === 'inactive') {
+        // open a popin while game is not paused
+        if (!gameIsPaused && popinState !== 'inactive') {
             togglePause()
-        } else if (!gameIsPaused && popinState !== 'inactive') {
+        // close popin about
+        } else if (gameIsRunning && gameIsPaused && popinState === 'inactive') {
             togglePause()
-        }
-        if (!gameIsRunning && popinState === 'inactive') {
+        // close popin gameover
+        } else if (countDownIsOver && !gameIsRunning && gameIsPaused && popinState === 'inactive') {
             startNewGame()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,6 +76,7 @@ const Playfield = ( {
         score = 0
         updateCurrentScoreCreator(score)
         speed = 1000
+        gameIsPaused = false
         gameIsRunning = true
         window.addEventListener('keydown', handleKeyPress)
         setNewShape(setNextShape)
@@ -92,7 +98,7 @@ const Playfield = ( {
         setShapeCoordinatesAndAxis(currentShape)
         if (checkIfCanMove(currentShapeCoordinates, 0)) {
             setTableBoxsCurrent()
-            timerId = setInterval(() => tick(), speed)
+            timerTetrominoesFalling = setInterval(() => tick(), speed)
             window.addEventListener('keydown', handleKeyPress)
         } else {
             endGame()
@@ -267,8 +273,8 @@ const Playfield = ( {
         const canMove = checkIfCanMove(currentShapeNextPosition, direction, isTick)
         if (canMove) {
             if (direction === 12 && !isTick) {
-                clearInterval(timerId)
-                timerId = setInterval(() => tick(), speed)
+                clearInterval(timerTetrominoesFalling)
+                timerTetrominoesFalling = setInterval(() => tick(), speed)
                 score += 1
                 updateCurrentScoreCreator(score)
             }
@@ -357,13 +363,32 @@ const Playfield = ( {
     }
 
     function cleanIntervalAndEvent() {
-        clearInterval(timerId)
+        clearInterval(timerTetrominoesFalling)
         window.removeEventListener('keydown', handleKeyPress)
     }
 
+    function setCountDownOver() {
+        countDownIsOver = true
+    }
+
     function togglePause() {
-        gameIsPaused ? timerId = setInterval(() => tick(), speed) : clearInterval(timerId)
+        gameIsPaused ? timerTetrominoesFalling = setInterval(() => tick(), speed) : clearInterval(timerTetrominoesFalling)
         gameIsPaused = !gameIsPaused
+    }
+
+    let moveOnHoldDownSpeed = 80
+    let moveOnHoldSideSpeed = 160
+
+    function moveOnTouchControl(direction, speed) {
+        if (gameIsRunning) {
+            moveShape(direction)
+            timerMoveOnHoldTouchControl = window.setInterval(() => moveShape(direction), speed)
+        }
+    }
+
+    function stopMoveOnTouchControl() {
+        clearInterval(timerMoveOnHoldTouchControl)
+        timerMoveOnHoldTouchControl = 0
     }
 
 
@@ -371,7 +396,10 @@ const Playfield = ( {
         <Fragment>
             <div className='playfield-container'>
                 <div className='playfield'>
-                    <Countdown startNewGame = {startNewGame}/>
+                    <Countdown
+                        startNewGame = {startNewGame}
+                        setCountDownOver = {setCountDownOver}
+                    />
                     {tableBoxs.map((box, i) =>
                         i % 12 === 11 ?
                         <Fragment key={i}><div className={tableBoxs[i]}></div><br/></Fragment> :
@@ -381,12 +409,24 @@ const Playfield = ( {
             </div>
             <div className='control'>
                 <div className='top'>
-                    <button onClick={() => moveShape(-1)}>l</button>
-                    <button onClick={() => rotate()}>t</button>
-                    <button onClick={() => moveShape(1)}>r</button>
+                    <button
+                        onTouchStart={() => moveOnTouchControl(-1, moveOnHoldSideSpeed)}
+                        onTouchEnd={() => stopMoveOnTouchControl()}
+                        className='arrow-left'
+                    ></button>
+                    <button onClick={() => rotate()} className='rotate'></button>
+                    <button
+                        onTouchStart={() => moveOnTouchControl(1, moveOnHoldSideSpeed)}
+                        onTouchEnd={() => stopMoveOnTouchControl()}
+                        className='arrow-right'
+                    ></button>
                 </div>
-                <div className='bottom'>
-                    <button onClick={() => moveShape(12)}>bottom</button>
+                <div className='down'>
+                    <button
+                        onTouchStart={() => moveOnTouchControl(12, moveOnHoldDownSpeed)}
+                        onTouchEnd={() => stopMoveOnTouchControl()}
+                        className='arrow-down'
+                    ></button>
                 </div>
             </div>
         </Fragment>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Countdown.scss';
 
-const Countdown = ( { startNewGame } ) => {
+const Countdown = ( { startNewGame, setCountDownOver } ) => {
 
     let timerCountdown
     let playCountdownValue = 3
@@ -25,6 +25,7 @@ const Countdown = ( { startNewGame } ) => {
         } else if (playCountdownValue === 'PLAY !') {
             playCountdownValue = ''
             clearInterval(timerCountdown)
+            setCountDownOver()
             startNewGame()
         }
         setPlayCountdown(playCountdownValue)

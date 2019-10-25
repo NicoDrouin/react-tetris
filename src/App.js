@@ -1,4 +1,4 @@
-import React from "react"
+import React, { StrictMode } from 'react'
 
 import { connect } from 'react-redux'
 
@@ -11,15 +11,17 @@ const App = ( { isEntranceClosed } ) => {
   let isTouch = (window.innerWidth * window.innerHeight) < 1024 * 768 ? true : false
 
   return (
-    <div className={isTouch ? 'App isTouch' : 'App'}>
-      {
-        isEntranceClosed
-        ?
-        <Tetris/>
-        :
-        <Entrance/>
-      }
-    </div>
+    <StrictMode>
+      <div className={isTouch ? 'App isTouch' : 'App'}>
+        {
+          isEntranceClosed
+          ?
+          <Tetris/>
+          :
+          <Entrance/>
+        }
+      </div>
+    </StrictMode>
   )
 }
 

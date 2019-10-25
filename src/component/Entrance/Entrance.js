@@ -1,7 +1,7 @@
 import React from 'react'
-import './Entrance.scss';
-import kremlin from '../../assets/img/kremlin.svg';
-import logoReact from '../../assets/img/react.svg';
+import './Entrance.scss'
+import kremlin from '../../assets/img/kremlin.svg'
+import logoReact from '../../assets/img/react.svg'
 
 import { connect } from 'react-redux'
 

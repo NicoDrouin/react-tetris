@@ -1,3 +1,8 @@
+$arrowLeft: url('../assets/img/arrowLeft.svg');
+$arrowRight: url('../assets/img/arrowRight.svg');
+$arrowDown: url('../assets/img/arrowDown.svg');
+$rotate: url('../assets/img/rotate.svg');
+
 /*  CONTROLS
   ============================== */
 
@@ -20,6 +25,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
         width: 80px;
         height: 72px;
         margin: 16px;
@@ -28,6 +34,9 @@
         color: white;
         border: 0;
         background-color: $primaryColor;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 40px;
         cursor: pointer;
         transition: background-color .25s ease;
 
@@ -40,9 +49,27 @@
         &::selection {
             background-color: transparent;
         }
+
+        &.arrow-left {
+            background-image: $arrowLeft;
+        }
+
+        &.rotate {
+            // background: $rotate no-repeat right;
+            background-image: $rotate;
+            background-size: 48px;
+        }
+
+        &.arrow-right {
+            background-image: $arrowRight;
+        }
+
+        &.arrow-down {
+            background-image: $arrowDown;
+        }
     }
 
-    .bottom {
+    .down {
         width: 304px;
 
         > button {
