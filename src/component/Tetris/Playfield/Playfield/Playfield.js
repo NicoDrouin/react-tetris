@@ -71,7 +71,9 @@ const Playfield = ( {
         tableBoxsCurrent = [...initialBoxs]
         tableBoxsStacked = [...initialBoxs]
         setTableBoxs([...initialBoxs])
+        lines = 0
         updateLinesCreator(0)
+        level = 1
         updateLevelCreator(1)
         score = 0
         updateCurrentScoreCreator(score)
@@ -266,25 +268,27 @@ const Playfield = ( {
     }
 
     const moveShape = (direction, isTick) => {
-        let currentShapeNextPosition = []
-        for (let i = 0, len = currentShapeCoordinates.length; i < len; i++) {
-            currentShapeNextPosition = [...currentShapeNextPosition, currentShapeCoordinates[i] + direction]
-        }
-        const canMove = checkIfCanMove(currentShapeNextPosition, direction, isTick)
-        if (canMove) {
-            if (direction === 12 && !isTick) {
-                clearInterval(timerTetrominoesFalling)
-                timerTetrominoesFalling = setInterval(() => tick(), speed)
-                score += 1
-                updateCurrentScoreCreator(score)
+        if (gameIsRunning && !gameIsPaused) {
+            let currentShapeNextPosition = []
+            for (let i = 0, len = currentShapeCoordinates.length; i < len; i++) {
+                currentShapeNextPosition = [...currentShapeNextPosition, currentShapeCoordinates[i] + direction]
             }
-            currentShapeCoordinates = currentShapeNextPosition
-            setTableBoxsCurrent()
+            const canMove = checkIfCanMove(currentShapeNextPosition, direction, isTick)
+            if (canMove) {
+                if (direction === 12 && !isTick) {
+                    clearInterval(timerTetrominoesFalling)
+                    timerTetrominoesFalling = setInterval(() => tick(), speed)
+                    score += 1
+                    updateCurrentScoreCreator(score)
+                }
+                currentShapeCoordinates = currentShapeNextPosition
+                setTableBoxsCurrent()
+            }
         }
     }
 
     function rotate() {
-        if (currentShape !== 'O') {
+        if (gameIsRunning && !gameIsPaused && currentShape !== 'O') {
             const currentShapeLength = currentShapeCoordinates.length
             const currentShapeAxisPosition = currentShapeCoordinates[currentShapeAxis]
             const currentShapeAxisHorizontalPosition = currentShapeAxisPosition % 12
@@ -372,15 +376,17 @@ const Playfield = ( {
     }
 
     function togglePause() {
-        gameIsPaused ? timerTetrominoesFalling = setInterval(() => tick(), speed) : clearInterval(timerTetrominoesFalling)
-        gameIsPaused = !gameIsPaused
+        if (countDownIsOver && gameIsRunning && popinState === 'inactive') {
+            gameIsPaused ? timerTetrominoesFalling = setInterval(() => tick(), speed) : clearInterval(timerTetrominoesFalling)
+            gameIsPaused = !gameIsPaused
+        }
     }
 
     let moveOnHoldDownSpeed = 80
     let moveOnHoldSideSpeed = 160
 
     function moveOnTouchControl(direction, speed) {
-        if (gameIsRunning) {
+        if (gameIsRunning && !gameIsPaused) {
             moveShape(direction)
             timerMoveOnHoldTouchControl = window.setInterval(() => moveShape(direction), speed)
         }
