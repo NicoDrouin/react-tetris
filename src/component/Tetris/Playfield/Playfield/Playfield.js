@@ -35,6 +35,8 @@ let gameIsRunning = false
 
 let countDownIsOver = false
 
+let popinStateValue = 'inactive'
+
 
 const Playfield = ( {
     setNextShapeCreator,
@@ -51,21 +53,28 @@ const Playfield = ( {
 } ) => {
 
     useEffect(() => {
-        // open a popin while game is not paused
-        if (!gameIsPaused && popinState !== 'inactive') {
-            togglePause()
-        // close popin about
-        } else if (gameIsRunning && gameIsPaused && popinState === 'inactive') {
-            togglePause()
-        // close popin gameover
-        } else if (countDownIsOver && !gameIsRunning && gameIsPaused && popinState === 'inactive') {
-            startNewGame()
+        setPopinStateValue(popinState)
+        if (countDownIsOver) {
+            // open a popin
+            if (popinState !== 'inactive') {
+                togglePause('pause')
+            // close a popin
+            } else if (gameIsPaused && popinState === 'inactive') {
+                if (gameIsRunning) { // close popin about
+                    togglePause('unpause')
+                } else if (!gameIsRunning) { // close popin gameover
+                    startNewGame()
+                }
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [popinState] )
 
-    const [tableBoxs, setTableBoxs] = useState([...initialBoxs])
+    function setPopinStateValue(popinState) {
+        popinStateValue = popinState
+    }
 
+    const [tableBoxs, setTableBoxs] = useState([...initialBoxs])
 
     function startNewGame() {
         tableBoxsCurrent = [...initialBoxs]
@@ -257,7 +266,7 @@ const Playfield = ( {
             case 'F1':
             case 'Escape':
             case 'p':
-                togglePause()
+                togglePause('toggle')
                 break
             default:
                 return // Quit when this doesn't handle the key event.
@@ -375,10 +384,16 @@ const Playfield = ( {
         countDownIsOver = true
     }
 
-    function togglePause() {
-        if (countDownIsOver && gameIsRunning && popinState === 'inactive') {
-            gameIsPaused ? timerTetrominoesFalling = setInterval(() => tick(), speed) : clearInterval(timerTetrominoesFalling)
-            gameIsPaused = !gameIsPaused
+    function togglePause(action) {
+        if (action === 'toggle'){
+            action = gameIsPaused ? 'unpause' : 'pause'
+        }
+        if (action === 'pause') {
+            clearInterval(timerTetrominoesFalling)
+            gameIsPaused = true
+        } else if (action === 'unpause' && popinStateValue === 'inactive') {
+            timerTetrominoesFalling = setInterval(() => tick(), speed)
+            gameIsPaused = false
         }
     }
 
@@ -439,26 +454,22 @@ const Playfield = ( {
     )
 }
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     nextShape: state.setNextShapeReducer,
     lines: state.updateLinesReducer,
     level: state.updateLevelReducer,
     score: state.updateCurrentScoreReducer,
     popinState: state.setPopinReducer
-  }
-}
+})
 
-const mapDispatchToProps = dispatch => {
-    return {
-        setNextShapeCreator: (nextShape) => dispatch({ type: 'SET_NEXT_SHAPE', nextShape }),
-        updateLinesCreator: (lines) => dispatch({ type: 'UPDATE_LINES', lines }),
-        updateLevelCreator: (level) => dispatch({ type: 'UPDATE_LEVEL', level }),
-        updateCurrentScoreCreator: (score) => dispatch({ type: 'UPDATE_CURRENT_SCORE', score }),
-        updateHighScoresCreator: (score) => dispatch({ type: 'UPDATE_HIGH_SCORES', newScore: score }),
-        setPopinCreator: () => dispatch({ type: 'SET_POPIN_STATE', popinState: 'gameOver' })
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    setNextShapeCreator: (nextShape) => dispatch({ type: 'SET_NEXT_SHAPE', nextShape }),
+    updateLinesCreator: (lines) => dispatch({ type: 'UPDATE_LINES', lines }),
+    updateLevelCreator: (level) => dispatch({ type: 'UPDATE_LEVEL', level }),
+    updateCurrentScoreCreator: (score) => dispatch({ type: 'UPDATE_CURRENT_SCORE', score }),
+    updateHighScoresCreator: (score) => dispatch({ type: 'UPDATE_HIGH_SCORES', newScore: score }),
+    setPopinCreator: () => dispatch({ type: 'SET_POPIN_STATE', popinState: 'gameOver' })
+})
 
 export default connect(
     mapStateToProps,
