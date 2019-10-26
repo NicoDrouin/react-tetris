@@ -1,7 +1,14 @@
-$arrowLeft: url('../assets/img/arrowLeft.svg');
-$arrowRight: url('../assets/img/arrowRight.svg');
-$arrowDown: url('../assets/img/arrowDown.svg');
-$rotate: url('../assets/img/rotate.svg');
+@import '../../../../styles/colors';
+
+
+/*  ICON URLS
+  ============================== */
+
+$arrowLeft: url('../../../../assets/img/arrowLeft.svg');
+$arrowRight: url('../../../../assets/img/arrowRight.svg');
+$arrowDown: url('../../../../assets/img/arrowDown.svg');
+$rotate: url('../../../../assets/img/rotate.svg');
+
 
 /*  CONTROLS
   ============================== */
@@ -25,7 +32,6 @@ $rotate: url('../assets/img/rotate.svg');
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
         width: 80px;
         height: 72px;
         margin: 16px;
@@ -55,7 +61,6 @@ $rotate: url('../assets/img/rotate.svg');
         }
 
         &.rotate {
-            // background: $rotate no-repeat right;
             background-image: $rotate;
             background-size: 48px;
         }

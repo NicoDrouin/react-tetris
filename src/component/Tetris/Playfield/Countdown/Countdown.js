@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './Countdown.scss';
+import './Countdown.scss'
 
 const Countdown = ( { startNewGame, setCountDownOver } ) => {
 

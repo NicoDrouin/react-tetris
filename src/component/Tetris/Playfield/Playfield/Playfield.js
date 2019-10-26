@@ -4,6 +4,7 @@ import './Playfield.scss'
 import { connect } from 'react-redux'
 
 import Countdown from '../Countdown/Countdown'
+import Controls from '../Controls/Controls'
 
 import setNewShape from '../functions/setNewShape'
 import { wallKicksClassic, wallKicksI } from '../functions/wallKicksData'
@@ -27,7 +28,6 @@ let currentShapeWallKicksPosition
 let speed = 1000
 
 let timerTetrominoesFalling
-let timerMoveOnHoldTouchControl
 
 let gameIsPaused = false
 
@@ -76,6 +76,10 @@ const Playfield = ( {
 
     const [tableBoxs, setTableBoxs] = useState([...initialBoxs])
 
+    function setCountDownOver() {
+        countDownIsOver = true
+    }
+
     function startNewGame() {
         tableBoxsCurrent = [...initialBoxs]
         tableBoxsStacked = [...initialBoxs]
@@ -114,14 +118,6 @@ const Playfield = ( {
         } else {
             endGame()
         }
-    }
-
-    function setTableBoxsCurrent() {
-        tableBoxsCurrent = [...tableBoxsStacked]
-        for (let i = 0, len = currentShapeCoordinates.length; i < len; i++) {
-            tableBoxsCurrent[currentShapeCoordinates[i]] = currentShape
-        }
-        setTableBoxs(tableBoxsCurrent);
     }
 
     function setShapeCoordinatesAndAxis(currentShape) {
@@ -171,74 +167,12 @@ const Playfield = ( {
         return true
     }
 
-    function checkForFullLines() {
-        let fullLines = []
-        for (let i = 0; i < 22; i++) {
-            let lineIsFull = true
-            for (let j = 0; j < 12 && lineIsFull === true; j++) {
-                if (tableBoxsStacked[(i * 12) + j] === 'empty') {
-                    lineIsFull = false
-                }
-            }
-            if (lineIsFull) {
-                fullLines = [...fullLines, i]
-            }
+    function setTableBoxsCurrent() {
+        tableBoxsCurrent = [...tableBoxsStacked]
+        for (let i = 0, len = currentShapeCoordinates.length; i < len; i++) {
+            tableBoxsCurrent[currentShapeCoordinates[i]] = currentShape
         }
-        if (fullLines.length > 0) {
-            removeFullLines(fullLines)
-        }
-    }
-
-    function removeFullLines(fullLines) {
-        const len = fullLines.length
-        for (let i = 0; i < len; i++) {
-            for (let pixelToRemove = (fullLines[i] * 12) + 11; pixelToRemove > -1; pixelToRemove--) {
-                tableBoxsCurrent[pixelToRemove] = tableBoxsCurrent[pixelToRemove - 12]
-            }
-            for (let j = 0; j < 12; j++) {
-                tableBoxsCurrent[j] = 
-                    j % 12 === 0 || j % 12 === 11 ?
-                    'border' :
-                    'empty'
-            }
-        }
-        incrementLines(len)
-        incrementScore(len)
-    }
-
-    function incrementLines(linesRemoved) {
-        lines += linesRemoved
-        updateLinesCreator(lines)
-        updateIntervalLevel()
-    }
-
-    function updateIntervalLevel() {
-        level = Math.floor(lines / 10) + 1
-        updateLevelCreator(level)
-        level > 1 && updateSpeed()
-    }
-
-    function incrementScore(linesRemoved) {
-        switch(linesRemoved) {
-            case 1:
-                score += 40 * level
-                break
-            case 2:
-                score += 100 * level
-                break
-            case 3:
-                score += 300 * level
-                break
-            case 4:
-                score += 1200 * level
-                break
-            default:
-                // nope
-        }
-    }
-
-    function updateSpeed() {
-        speed = ((0.8 - ((level - 1) * 0.007)) ** (level - 1)) * 1000
+        setTableBoxs(tableBoxsCurrent);
     }
 
     function handleKeyPress(event) {
@@ -356,6 +290,76 @@ const Playfield = ( {
         return false
     }
 
+    function checkForFullLines() {
+        let fullLines = []
+        for (let i = 0; i < 22; i++) {
+            let lineIsFull = true
+            for (let j = 0; j < 12 && lineIsFull === true; j++) {
+                if (tableBoxsStacked[(i * 12) + j] === 'empty') {
+                    lineIsFull = false
+                }
+            }
+            if (lineIsFull) {
+                fullLines = [...fullLines, i]
+            }
+        }
+        if (fullLines.length > 0) {
+            removeFullLines(fullLines)
+        }
+    }
+
+    function removeFullLines(fullLines) {
+        const len = fullLines.length
+        for (let i = 0; i < len; i++) {
+            for (let pixelToRemove = (fullLines[i] * 12) + 11; pixelToRemove > -1; pixelToRemove--) {
+                tableBoxsCurrent[pixelToRemove] = tableBoxsCurrent[pixelToRemove - 12]
+            }
+            for (let j = 0; j < 12; j++) {
+                tableBoxsCurrent[j] = 
+                    j % 12 === 0 || j % 12 === 11 ?
+                    'border' :
+                    'empty'
+            }
+        }
+        incrementLines(len)
+        incrementScore(len)
+    }
+
+    function incrementLines(linesRemoved) {
+        lines += linesRemoved
+        updateLinesCreator(lines)
+        updateIntervalLevel()
+    }
+
+    function updateIntervalLevel() {
+        level = Math.floor(lines / 10) + 1
+        updateLevelCreator(level)
+        level > 1 && updateSpeed()
+    }
+
+    function incrementScore(linesRemoved) {
+        switch(linesRemoved) {
+            case 1:
+                score += 40 * level
+                break
+            case 2:
+                score += 100 * level
+                break
+            case 3:
+                score += 300 * level
+                break
+            case 4:
+                score += 1200 * level
+                break
+            default:
+                // nope
+        }
+    }
+
+    function updateSpeed() {
+        speed = ((0.8 - ((level - 1) * 0.007)) ** (level - 1)) * 1000
+    }
+
     function endCycle() {
         tableBoxsStacked = tableBoxsCurrent
         checkForFullLines()
@@ -380,10 +384,6 @@ const Playfield = ( {
         window.removeEventListener('keydown', handleKeyPress)
     }
 
-    function setCountDownOver() {
-        countDownIsOver = true
-    }
-
     function togglePause(action) {
         if (action === 'toggle'){
             action = gameIsPaused ? 'unpause' : 'pause'
@@ -395,21 +395,6 @@ const Playfield = ( {
             timerTetrominoesFalling = setInterval(() => tick(), speed)
             gameIsPaused = false
         }
-    }
-
-    let moveOnHoldDownSpeed = 80
-    let moveOnHoldSideSpeed = 160
-
-    function moveOnTouchControl(direction, speed) {
-        if (gameIsRunning && !gameIsPaused) {
-            moveShape(direction)
-            timerMoveOnHoldTouchControl = window.setInterval(() => moveShape(direction), speed)
-        }
-    }
-
-    function stopMoveOnTouchControl() {
-        clearInterval(timerMoveOnHoldTouchControl)
-        timerMoveOnHoldTouchControl = 0
     }
 
 
@@ -428,28 +413,12 @@ const Playfield = ( {
                     )}
                 </div>
             </div>
-            <div className='control'>
-                <div className='top'>
-                    <button
-                        onTouchStart={() => moveOnTouchControl(-1, moveOnHoldSideSpeed)}
-                        onTouchEnd={() => stopMoveOnTouchControl()}
-                        className='arrow-left'
-                    ></button>
-                    <button onClick={() => rotate()} className='rotate'></button>
-                    <button
-                        onTouchStart={() => moveOnTouchControl(1, moveOnHoldSideSpeed)}
-                        onTouchEnd={() => stopMoveOnTouchControl()}
-                        className='arrow-right'
-                    ></button>
-                </div>
-                <div className='down'>
-                    <button
-                        onTouchStart={() => moveOnTouchControl(12, moveOnHoldDownSpeed)}
-                        onTouchEnd={() => stopMoveOnTouchControl()}
-                        className='arrow-down'
-                    ></button>
-                </div>
-            </div>
+            <Controls
+                gameIsRunning = {gameIsRunning}
+                gameIsPaused = {gameIsPaused}
+                moveShape = {moveShape}
+                rotate = {rotate}
+            />
         </Fragment>
     )
 }
