@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import './Playfield.scss'
 
 import { connect } from 'react-redux'
@@ -400,7 +401,7 @@ const Playfield = ( {
 
     return (
         <Fragment>
-            <div className='playfield-container'>
+            <section className='playfield-container'>
                 <div className='playfield'>
                     <Countdown
                         startNewGame = {startNewGame}
@@ -412,7 +413,7 @@ const Playfield = ( {
                         <div key={i} className={tableBoxs[i]}></div>
                     )}
                 </div>
-            </div>
+            </section>
             <Controls
                 gameIsRunning = {gameIsRunning}
                 gameIsPaused = {gameIsPaused}
@@ -439,6 +440,20 @@ const mapDispatchToProps = dispatch => ({
     updateHighScoresCreator: (score) => dispatch({ type: 'UPDATE_HIGH_SCORES', newScore: score }),
     setPopinCreator: () => dispatch({ type: 'SET_POPIN_STATE', popinState: 'gameOver' })
 })
+
+Countdown.propTypes = {
+    setNextShapeCreator: PropTypes.func,
+    nextShape: PropTypes.arrayOf(PropTypes.number),
+    updateLinesCreator: PropTypes.func,
+    updateLevelCreator: PropTypes.func,
+    updateCurrentScoreCreator: PropTypes.func,
+    lines: PropTypes.number,
+    level: PropTypes.number,
+    score: PropTypes.number,
+    updateHighScoresCreator: PropTypes.func,
+    setPopinCreator: PropTypes.func,
+    popinState: PropTypes.string
+}
 
 export default connect(
     mapStateToProps,

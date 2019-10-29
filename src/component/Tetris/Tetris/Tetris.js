@@ -1,6 +1,5 @@
 import React from 'react'
-import './Tetris.scss';
-
+import './Tetris.scss'
 import LeftSide from '../LeftSide/LeftSide/LeftSide'
 import Playfield from '../Playfield/Playfield/Playfield'
 import RightSide from '../RightSide/RightSide/RightSide'

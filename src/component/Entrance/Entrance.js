@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Entrance.scss'
 import kremlin from '../../assets/img/kremlin.svg'
 import logoReact from '../../assets/img/react.svg'
@@ -267,6 +268,10 @@ const mapDispatchToProps = dispatch => {
     return {
         closeEntranceCreator: () => dispatch({ type: 'CLOSE_ENTRANCE' }),
     }
+}
+
+Entrance.propTypes = {
+    closeEntranceCreator: PropTypes.func.isRequired
 }
 
 export default connect(

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
-import './HighScores.scss';
+import PropTypes from 'prop-types'
+import './HighScores.scss'
 
 import { connect } from 'react-redux'
 
@@ -32,6 +33,10 @@ const mapStateToProps = (state) => {
     return {
         highScoresList: state.updateHighScoresReducer
     }
+}
+
+HighScores.propTypes = {
+    highScoresList: PropTypes.arrayOf(PropTypes.number).isRequired
 }
 
 export default connect(

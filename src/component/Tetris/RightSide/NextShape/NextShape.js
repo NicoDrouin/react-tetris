@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './NextShape.scss';
 
 const NextShape = ( { nextShape } ) => {
@@ -110,10 +111,14 @@ const NextShape = ( { nextShape } ) => {
     }
 
     return (
-        <div className='next-shape-container'>
+        <section className='next-shape-container'>
             {printNextShape()}
-        </div>
+        </section>
     )
+}
+
+NextShape.propTypes = {
+    NextShape: PropTypes.string
 }
 
 export default NextShape

@@ -1,13 +1,19 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './InGameData.scss';
 
 const InGameData = ( { lib, data } ) => {
     return (
-        <div className='num-data'>
+        <section className='num-data'>
             {lib} :<br/>
             {data}
-        </div>
+        </section>
     )
+}
+
+InGameData.propTypes = {
+    lib: PropTypes.string.isRequired,
+    data: PropTypes.number.isRequired
 }
 
 export default InGameData

@@ -1,5 +1,6 @@
 import React from "react"
-import './RightSide.scss';
+import PropTypes from 'prop-types'
+import './RightSide.scss'
 
 import { connect } from 'react-redux'
 
@@ -10,7 +11,7 @@ import NextShape from '../NextShape/NextShape'
 const RightSide = ( { lines, level, score, nextShape } ) => {
 
   return (
-      <div className='right-side side'>
+      <section className='right-side side'>
         <InGameData
             lib = 'Lines'
             data = {lines}
@@ -24,7 +25,7 @@ const RightSide = ( { lines, level, score, nextShape } ) => {
             data = {score}
         />
         <NextShape nextShape = {nextShape} />
-    </div>
+    </section>
   )
 }
 
@@ -35,6 +36,13 @@ const mapStateToProps = (state) => {
     score: state.updateCurrentScoreReducer,
     nextShape: state.setNextShapeReducer
   }
+}
+
+RightSide.propTypes = {
+  lines: PropTypes.number.isRequired,
+  level: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  nextShape: PropTypes.string.isRequired
 }
 
 export default connect(

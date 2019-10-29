@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import './Countdown.scss'
 
 const Countdown = ( { startNewGame, setCountDownOver } ) => {
@@ -36,6 +37,11 @@ const Countdown = ( { startNewGame, setCountDownOver } ) => {
             {playCountdown}
         </span>
     )
+}
+
+Countdown.propTypes = {
+    startNewGame: PropTypes.func.isRequired,
+    setCountDownOver: PropTypes.bool.isRequired
 }
 
 export default Countdown

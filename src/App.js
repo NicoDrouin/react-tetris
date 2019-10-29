@@ -1,4 +1,5 @@
 import React, { StrictMode } from 'react'
+import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
 
@@ -12,7 +13,7 @@ const App = ( { isEntranceClosed } ) => {
 
   return (
     <StrictMode>
-      <div className={isTouch ? 'App isTouch' : 'App'}>
+      <div className={'App' + (isTouch ? ' isTouch' : '')}>
         {
           isEntranceClosed
           ?
@@ -29,6 +30,10 @@ const mapStateToProps = (state) => {
   return {
     isEntranceClosed: state.closeEntranceReducer
   }
+}
+
+App.propTypes = {
+  isEntranceClosed: PropTypes.bool.isRequired
 }
 
 export default connect(

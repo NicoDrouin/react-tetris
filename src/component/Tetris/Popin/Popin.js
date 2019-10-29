@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
-import './Popin.scss';
+import PropTypes from 'prop-types'
+import './Popin.scss'
 
 import { connect } from 'react-redux'
 
@@ -13,7 +14,7 @@ const Popin = ( { popinState, setPopinCreator } ) => {
     return (
             popinState !== 'inactive' &&
             <div className='popin-container'>
-                <div className='popin'>
+                <section className='popin'>
                     {
                         popinState === 'gameOver'
                         &&
@@ -33,7 +34,7 @@ const Popin = ( { popinState, setPopinCreator } ) => {
                                 <span className='btn' onClick={closePopin}>Okie dokie</span>
                             </Fragment>
                     }
-                </div>
+                </section>
             </div>
     )
 }
@@ -48,6 +49,11 @@ const mapDispatchToProps = dispatch => {
     return {
         setPopinCreator: () => dispatch({ type: 'SET_POPIN_STATE', popinState: 'inactive'}),
     }
+}
+
+Popin.propTypes = {
+    setPopinCreator: PropTypes.func,
+    popinState: PropTypes.string.isRequired
 }
 
 export default connect(

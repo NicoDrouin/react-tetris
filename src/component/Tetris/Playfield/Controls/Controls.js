@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Controls.scss'
 
 let timerMoveOnHoldTouchControl
@@ -21,7 +22,7 @@ const Controls = ( { gameIsRunning, gameIsPaused, moveShape, rotate } ) => {
     }
 
     return (
-        <div className='control'>
+        <section className='control'>
             <div className='top'>
                 <button
                     onTouchStart={() => moveOnTouchControl(-1, moveOnHoldSideSpeed)}
@@ -42,8 +43,15 @@ const Controls = ( { gameIsRunning, gameIsPaused, moveShape, rotate } ) => {
                     className='arrow-down'
                 ></button>
             </div>
-        </div>
+        </section>
     )
+}
+
+Controls.propTypes = {
+    gameIsRunning: PropTypes.bool.isRequired,
+    gameIsPaused: PropTypes.bool.isRequired,
+    moveShape: PropTypes.func.isRequired,
+    rotate: PropTypes.func.isRequired
 }
 
 export default Controls

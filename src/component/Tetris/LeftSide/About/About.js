@@ -1,5 +1,6 @@
 import React from 'react'
-import './About.scss';
+import PropTypes from 'prop-types'
+import './About.scss'
 
 import { connect } from 'react-redux'
 
@@ -21,6 +22,10 @@ const mapDispatchToProps = dispatch => {
     return {
         setPopinCreator: () => dispatch({ type: 'SET_POPIN_STATE', popinState: 'about'}),
     }
+}
+
+About.propTypes = {
+    setPopinCreator: PropTypes.func.isRequired
 }
 
 export default connect(
