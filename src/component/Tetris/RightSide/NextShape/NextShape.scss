@@ -3,8 +3,6 @@
 
 .next-shape-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
     max-width: 240px;
     max-height: 167px;
@@ -17,10 +15,6 @@
 }
 
 .next-shape {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     position: absolute;
     top: 50%;
     left: 0;
@@ -30,7 +24,6 @@
     .line {
     display: flex;
     justify-content: center;
-    width: 100%;
 
         > div {
             width: 20%;

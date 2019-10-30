@@ -20,7 +20,7 @@ const Countdown = ( { startNewGame, setCountDownOver } ) => {
 
     function countdown() {
         if (playCountdownValue > 1) {
-            playCountdownValue = playCountdownValue - 1
+            playCountdownValue--
         } else if (playCountdownValue === 1) {
             playCountdownValue = 'PLAY !'
         } else if (playCountdownValue === 'PLAY !') {

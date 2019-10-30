@@ -15,246 +15,246 @@ const Entrance = ( { closeEntranceCreator } ) => {
             <img src={kremlin} alt='Kremlin'/>
 
             <div className='table top'>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
+                <div></div>
                 <div className='T'></div>
                 <div className='T'></div>
                 <div className='T'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='L'></div>
                 <div className='L'></div>
                 <div className='L'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='T'></div>
                 <div className='T'></div>
                 <div className='T'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='S'></div>
                 <div className='S'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='L'></div>
                 <div className='L'></div>
                 <div className='L'></div>
-                <div className='empty'></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='T'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='L'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <div className='T'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='Z'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='S'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='L'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='O'></div>
                 <div className='O'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <div className='Z'></div>
                 <div className='Z'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='O'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='J'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='O'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='O'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <div className='J'></div>
-                <div className='empty'></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='J'></div>
                 <div className='J'></div>
                 <div className='J'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
                 <div className='O'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='O'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='I'></div>
-                <div className='empty'></div>
+                <div></div>
                 <div className='J'></div>
                 <div className='J'></div>
                 <div className='J'></div>
-                <div className='empty'></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
             </div>
 
             <div className='table bottom'>
                 <img src={logoReact} alt='logo React'/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <br/>
 
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
-                <div className='empty'></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
 
             <p>A React-powered Tetris</p>

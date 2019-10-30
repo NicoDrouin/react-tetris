@@ -12,9 +12,9 @@ const About = ( { setPopinCreator } ) => {
     }
 
     return (
-        <div className='about'>
+        <section className='about'>
             <p onClick={openPopin}>About</p>
-        </div>
+        </section>
     )
 }
 

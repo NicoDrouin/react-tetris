@@ -68,12 +68,10 @@ const Music = () => {
             {
                 playerIsVisible ?
                     musicIsActive ?
-                        <span className='btn' onClick={playOrPause}>Turn music off !</span>:
-                        <span className='btn' onClick={playOrPause}>Turn music on !</span>:
-                    <span className='btn' onClick={loadPlayer}>Play me a song !</span>
+                        <div className='btn' onClick={playOrPause}>Turn music off !</div>:
+                        <div className='btn' onClick={playOrPause}>Turn music on !</div>:
+                    <div className='btn' onClick={loadPlayer}>Play me a song !</div>
             }
-            <br/>
-            <br/>
             <div id="player"></div>
         </div>
     )
