@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './Countdown.scss'
 
+let timerCountdown
+let timerCountDownIsActive = false
+let playCountdownValue = 3
+
 const Countdown = ( { startNewGame, setCountDownOver } ) => {
 
-    let timerCountdown
-    let playCountdownValue = 3
-
-    useEffect(() => {
-        popinPlayCountdown()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [] )
+    timerCountdown = !timerCountDownIsActive && setInterval(() => countdown(), 1000)
 
     const [playCountdown, setPlayCountdown] = useState(3)
-
-    function popinPlayCountdown() {
-        timerCountdown = setInterval(() => countdown(), 1000)
-    }
 
     function countdown() {
         if (playCountdownValue > 1) {
             playCountdownValue--
+            timerCountDownIsActive = true
         } else if (playCountdownValue === 1) {
             playCountdownValue = 'PLAY !'
         } else if (playCountdownValue === 'PLAY !') {
