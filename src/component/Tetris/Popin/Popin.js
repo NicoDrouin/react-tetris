@@ -30,7 +30,7 @@ const Popin = ( { popinState, setPopinCreator } ) => {
                             <Fragment>
                                 <p>This game is a tribute to Tetris and is not affiliated with the Tetris Company.</p>
                                 <p>I did it to learn how to develop with React.</p>
-                                <p>I used the font <a href='http://www.tenbytwenty.com/#munro'>Munro</a> font created by <a href='http://edmerritt.com/'>Ed Merritt</a> and an icon from Saint Basil Cathedral made by <a href='https://www.freepik.com/home'>Freepik</a> from <a href='http://www.flaticon.com/'>www.flaticon.com</a></p>
+                                <p>I used the font <a href='http://www.tenbytwenty.com/#munro'>Munro</a> created by <a href='http://edmerritt.com/'>Ed Merritt</a> and an icon from Saint Basil Cathedral made by <a href='https://www.freepik.com/home'>Freepik</a> from <a href='http://www.flaticon.com/'>www.flaticon.com</a></p>
                                 <span className='btn' onClick={closePopin}>Okie dokie</span>
                             </Fragment>
                     }

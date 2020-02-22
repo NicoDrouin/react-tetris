@@ -1,35 +1,33 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import useInterval from '../../../../hooks/useInterval'
 import './Countdown.scss'
+import PropTypes from 'prop-types'
 
-let timerCountdown
-let timerCountDownIsActive = false
-let playCountdownValue = 3
 
 const Countdown = ( { startNewGame, setCountDownOver } ) => {
 
-    timerCountdown = !timerCountDownIsActive && setInterval(() => countdown(), 1000)
-
     const [playCountdown, setPlayCountdown] = useState(3)
 
+    useInterval(() => {
+        countdown()
+        }, playCountdown >= 0 ? 1000 : null
+    )
+
     function countdown() {
-        if (playCountdownValue > 1) {
-            playCountdownValue--
-            timerCountDownIsActive = true
-        } else if (playCountdownValue === 1) {
-            playCountdownValue = 'PLAY !'
-        } else if (playCountdownValue === 'PLAY !') {
-            playCountdownValue = ''
-            clearInterval(timerCountdown)
+        if (playCountdown === 0) {
             setCountDownOver()
             startNewGame()
         }
-        setPlayCountdown(playCountdownValue)
+        setPlayCountdown(playCountdown - 1)
     }
 
     return (
         <span className='countdown'>
-            {playCountdown}
+            {
+                playCountdown > 0 ? playCountdown :
+                playCountdown === 0 ? 'PLAY !' :
+                ''
+            }
         </span>
     )
 }

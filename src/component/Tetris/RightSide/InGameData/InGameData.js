@@ -11,6 +11,11 @@ const InGameData = ( { lib, data } ) => {
     )
 }
 
+InGameData.defaultProps = {
+    lib: "value",
+    data: "0"
+}
+
 InGameData.propTypes = {
     lib: PropTypes.string.isRequired,
     data: PropTypes.number.isRequired
