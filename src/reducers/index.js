@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 import closeEntranceReducer from './closeEntranceReducer'
-import setNextShapeReducer from './setNextShapeReducer'
+import setNextTetrominoReducer from './setNextTetrominoReducer'
 import updateLinesReducer from './updateLinesReducer'
 import updateLevelReducer from './updateLevelReducer'
 import updateCurrentScoreReducer from './updateCurrentScoreReducer'
@@ -11,7 +11,7 @@ import setPopinReducer from './setPopinReducer'
 
 const rootReducer = combineReducers({
     closeEntranceReducer,
-    setNextShapeReducer,
+    setNextTetrominoReducer,
     updateLinesReducer,
     updateLevelReducer,
     updateCurrentScoreReducer,

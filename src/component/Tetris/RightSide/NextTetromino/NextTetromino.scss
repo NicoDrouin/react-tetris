@@ -1,7 +1,7 @@
-/*  NEXT SHAPE
+/*  NEXT TETROMINO
   ============================== */
 
-.next-shape-container {
+.next-tetromino-container {
     display: flex;
     position: relative;
     max-width: 240px;
@@ -14,7 +14,7 @@
     }
 }
 
-.next-shape {
+.next-tetromino {
     position: absolute;
     top: 50%;
     left: 0;
@@ -40,13 +40,13 @@
 /*  RESP
   ============================== */
 
-.isTouch .next-shape-container {
+.isTouch .next-tetromino-container {
     width: calc((100vh - (176px + 10px + 32px)) / 4);
     height: calc((100vh - (176px + 10px + 32px)) / 20 * 3);
 }
 
 @media screen and (min-width: 342px) {
-    .isTouch .next-shape-container {
+    .isTouch .next-tetromino-container {
         max-width: calc(((100vw - 32px) * (1 / 3)) - 20px);
         max-height: calc((100vw - 32px) * (3 / 15));
     }

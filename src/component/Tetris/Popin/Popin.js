@@ -12,7 +12,7 @@ const Popin = ( { popinState, setPopinCreator } ) => {
     }
 
     return (
-            popinState !== 'inactive' &&
+            popinState !== 'noPopin' &&
             <div className='popin-container'>
                 <section className='popin'>
                     {
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setPopinCreator: () => dispatch({ type: 'SET_POPIN_STATE', popinState: 'inactive'}),
+        setPopinCreator: () => dispatch({ type: 'SET_POPIN_STATE', popinState: 'noPopin'}),
     }
 }
 

@@ -4,15 +4,15 @@ import './Controls.scss'
 
 let timerMoveOnHoldTouchControl
 
-const Controls = ( { gameIsRunning, gameIsPaused, moveShape, rotate } ) => {
+const Controls = ( { gameIsRunning, gameIsPaused, moveTetromino, rotate } ) => {
 
     const moveOnHoldDownSpeed = 80
     const moveOnHoldSideSpeed = 160
 
     function moveOnTouchControl(direction, speed) {
         if (gameIsRunning && !gameIsPaused) {
-            moveShape(direction)
-            timerMoveOnHoldTouchControl = window.setInterval(() => moveShape(direction), speed)
+            moveTetromino(direction)
+            timerMoveOnHoldTouchControl = window.setInterval(() => moveTetromino(direction), speed)
         }
     }
 
@@ -50,7 +50,7 @@ const Controls = ( { gameIsRunning, gameIsPaused, moveShape, rotate } ) => {
 Controls.propTypes = {
     gameIsRunning: PropTypes.bool.isRequired,
     gameIsPaused: PropTypes.bool.isRequired,
-    moveShape: PropTypes.func.isRequired,
+    moveTetromino: PropTypes.func.isRequired,
     rotate: PropTypes.func.isRequired
 }
 

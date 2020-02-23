@@ -2,62 +2,62 @@ import { wallKicksClassic, wallKicksI } from './wallKicksData'
 import {
     setTableBoxsCurrent,
     tableBoxsStacked,
-    currentShape,
-    currentShapeAxis,
-    currentShapeRotationState,
-    currentShapeCoordinates,
-    currentShapeWallKicksPosition
+    currentTetromino,
+    currentTetrominoAxis,
+    currentTetrominoRotationState,
+    currentTetrominoCoordinates,
+    currentTetrominoWallKicksPosition
 } from '../Playfield'
 
 export function rotate() {
-    if (currentShape !== 'O') {
-        const currentShapeLength = currentShapeCoordinates.length
-        const currentShapeAxisPosition = currentShapeCoordinates[currentShapeAxis]
-        const currentShapeAxisHorizontalPosition = currentShapeAxisPosition % 12
-        const currentShapeAxisVerticalPosition = Math.floor(currentShapeAxisPosition / 12)
-        let currentShapeNextPosition = []
-        for (let i = 0; i < currentShapeLength; i++) {
-            let boxPosition = currentShapeCoordinates[i]
+    if (currentTetromino !== 'O') {
+        const currentTetrominoLength = currentTetrominoCoordinates.length
+        const currentTetrominoAxisPosition = currentTetrominoCoordinates[currentTetrominoAxis]
+        const currentTetrominoAxisHorizontalPosition = currentTetrominoAxisPosition % 12
+        const currentTetrominoAxisVerticalPosition = Math.floor(currentTetrominoAxisPosition / 12)
+        let currentTetrominoNextPosition = []
+        for (let i = 0; i < currentTetrominoLength; i++) {
+            let boxPosition = currentTetrominoCoordinates[i]
             let boxHorizontalPosition = boxPosition % 12
             let boxVerticalPosition = Math.floor(boxPosition / 12)
             let boxDisplacement =
-                ((currentShapeAxisHorizontalPosition - boxHorizontalPosition) * -11) +
-                ((currentShapeAxisVerticalPosition - boxVerticalPosition) * 13)
-            currentShapeRotationState = currentShapeRotationState % 4
-            if (currentShape === 'I') {
-                if (currentShapeRotationState === 0) {
+                ((currentTetrominoAxisHorizontalPosition - boxHorizontalPosition) * -11) +
+                ((currentTetrominoAxisVerticalPosition - boxVerticalPosition) * 13)
+            currentTetrominoRotationState = currentTetrominoRotationState % 4
+            if (currentTetromino === 'I') {
+                if (currentTetrominoRotationState === 0) {
                     boxDisplacement++
-                } else if (currentShapeRotationState === 1) {
+                } else if (currentTetrominoRotationState === 1) {
                     boxDisplacement += 12
-                } else if (currentShapeRotationState === 2) {
+                } else if (currentTetrominoRotationState === 2) {
                     boxDisplacement--
-                } else if (currentShapeRotationState === 3) {
+                } else if (currentTetrominoRotationState === 3) {
                     boxDisplacement -= 12
                 }
             }
             let boxPositionAfterRotation = boxPosition + boxDisplacement
-            currentShapeNextPosition = [...currentShapeNextPosition, boxPositionAfterRotation]
+            currentTetrominoNextPosition = [...currentTetrominoNextPosition, boxPositionAfterRotation]
         }
-        if (checkIfCanRotate(currentShapeNextPosition)) {
-            currentShapeCoordinates = currentShapeWallKicksPosition
-            currentShapeRotationState++
+        if (checkIfCanRotate(currentTetrominoNextPosition)) {
+            currentTetrominoCoordinates = currentTetrominoWallKicksPosition
+            currentTetrominoRotationState++
             setTableBoxsCurrent()
         }
     }
 }
 
-function checkIfCanRotate(currentShapeNextPosition) {
-    const len = currentShapeNextPosition.length
+function checkIfCanRotate(currentTetrominoNextPosition) {
+    const len = currentTetrominoNextPosition.length
     let canRotate
     let wallKicks
-    currentShape !== 'I' ? wallKicks = wallKicksClassic : wallKicks = wallKicksI
+    currentTetromino !== 'I' ? wallKicks = wallKicksClassic : wallKicks = wallKicksI
         for (let wallKicksTest = 0; wallKicksTest < 5; wallKicksTest++) {
             canRotate = true
-            currentShapeWallKicksPosition = []
-            const wallKickVariationPosition = wallKicks[currentShapeRotationState][wallKicksTest]
+            currentTetrominoWallKicksPosition = []
+            const wallKickVariationPosition = wallKicks[currentTetrominoRotationState][wallKicksTest]
             for (let i = 0; i < len; i++) {
-                currentShapeWallKicksPosition[i] = currentShapeNextPosition[i] + wallKickVariationPosition
-                if (tableBoxsStacked[currentShapeWallKicksPosition[i]] !== 'empty') {
+                currentTetrominoWallKicksPosition[i] = currentTetrominoNextPosition[i] + wallKickVariationPosition
+                if (tableBoxsStacked[currentTetrominoWallKicksPosition[i]] !== 'empty') {
                     canRotate = false
                     break
                 }

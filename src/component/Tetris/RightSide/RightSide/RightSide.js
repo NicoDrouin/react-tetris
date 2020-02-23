@@ -5,10 +5,10 @@ import './RightSide.scss'
 import { connect } from 'react-redux'
 
 import InGameData from '../InGameData/InGameData'
-import NextShape from '../NextShape/NextShape'
+import NextTetromino from '../NextTetromino/NextTetromino'
 
 
-const RightSide = ( { lines, level, score, nextShape } ) => {
+const RightSide = ( { lines, level, score, nextTetromino } ) => {
 
   return (
       <section className='right-side side'>
@@ -24,7 +24,7 @@ const RightSide = ( { lines, level, score, nextShape } ) => {
             lib = 'Score'
             data = {score}
         />
-        <NextShape nextShape = {nextShape} />
+        <NextTetromino nextTetromino = {nextTetromino} />
     </section>
   )
 }
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
     lines: state.updateLinesReducer,
     level: state.updateLevelReducer,
     score: state.updateCurrentScoreReducer,
-    nextShape: state.setNextShapeReducer
+    nextTetromino: state.setNextTetrominoReducer
   }
 }
 
@@ -42,7 +42,7 @@ RightSide.propTypes = {
   lines: PropTypes.number.isRequired,
   level: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
-  nextShape: PropTypes.string.isRequired
+  nextTetromino: PropTypes.string.isRequired
 }
 
 export default connect(

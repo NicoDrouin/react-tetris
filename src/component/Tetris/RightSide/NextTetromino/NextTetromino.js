@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './NextShape.scss';
+import './NextTetromino.scss';
 
-const NextShape = ( { nextShape } ) => {
+const NextTetromino = ( { nextTetromino } ) => {
 
-    function printNextShape() {
-        switch(nextShape) {
+    function printNextTetromino() {
+        switch(nextTetromino) {
             case 'I':
                 return (
-                    <div className='next-shape'>
+                    <div className='next-tetromino'>
                         <div className='line'>
                             <div className='I'></div>
                             <div className='I'></div>
@@ -19,7 +19,7 @@ const NextShape = ( { nextShape } ) => {
                 )
             case 'J':
                 return (
-                    <div className='next-shape'>
+                    <div className='next-tetromino'>
                         <div className='line'>
                             <div className='J'></div>
                             <div className='empty'></div>
@@ -34,7 +34,7 @@ const NextShape = ( { nextShape } ) => {
                 )
             case 'L':
                 return (
-                    <div className='next-shape'>
+                    <div className='next-tetromino'>
                         <div className='line'>
                             <div className='empty'></div>
                             <div className='empty'></div>
@@ -49,7 +49,7 @@ const NextShape = ( { nextShape } ) => {
                 )
             case 'O':
                 return (
-                    <div className='next-shape'>
+                    <div className='next-tetromino'>
                         <div className='line'>
                             <div className='O'></div>
                             <div className='O'></div>
@@ -62,7 +62,7 @@ const NextShape = ( { nextShape } ) => {
                 )
             case 'S':
                 return (
-                    <div className='next-shape'>
+                    <div className='next-tetromino'>
                         <div className='line'>
                             <div className='empty'></div>
                             <div className='S'></div>
@@ -77,7 +77,7 @@ const NextShape = ( { nextShape } ) => {
                 )
             case 'T':
                 return (
-                    <div className='next-shape'>
+                    <div className='next-tetromino'>
                         <div className='line'>
                             <div className='empty'></div>
                             <div className='T'></div>
@@ -92,7 +92,7 @@ const NextShape = ( { nextShape } ) => {
                 )
             case 'Z':
                 return (
-                    <div className='next-shape'>
+                    <div className='next-tetromino'>
                      <div className='line'>
                             <div className='Z'></div>
                             <div className='Z'></div>
@@ -106,19 +106,19 @@ const NextShape = ( { nextShape } ) => {
                     </div>
                 )
             default:
-                return <div className='next-shape'></div>
+                return <div className='next-tetromino'></div>
         }
     }
 
     return (
-        <section className='next-shape-container'>
-            {printNextShape()}
+        <section className='next-tetromino-container'>
+            {printNextTetromino()}
         </section>
     )
 }
 
-NextShape.propTypes = {
-    NextShape: PropTypes.string
+NextTetromino.propTypes = {
+    NextTetromino: PropTypes.string
 }
 
-export default NextShape
+export default NextTetromino

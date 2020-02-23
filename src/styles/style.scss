@@ -81,7 +81,7 @@ body {
 /*  COMMONS - TABLES
   ============================== */
 
-.next-shape-container,
+.next-tetromino-container,
 .playfield,
 .entrance > .table {
   background-color: $secondaryColor;
@@ -101,7 +101,7 @@ body {
   }
 }
 
-.next-shape .line,
+.next-tetromino .line,
 .playfield {
 
   > div {
